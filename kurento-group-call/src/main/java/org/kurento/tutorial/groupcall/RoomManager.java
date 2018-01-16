@@ -53,7 +53,7 @@ public class RoomManager {
 
     if (room == null) {
       log.debug("Room {} not existent. Will create now!", roomName);
-      MediaPipeline pipeline=kurento.getById("3c3b4112-6613-433f-8470-0bdf4f06eaa2_kurento.MediaPipeline",MediaPipeline.class);
+      MediaPipeline pipeline=kurento.getById("8ec1f5d5-dec4-4dc3-aaaa-579d90f852dd_kurento.MediaPipeline",MediaPipeline.class);
       room = new Room(roomName, pipeline);
       log.info("kurento sessionId:{}",kurento.getSessionId());
       rooms.put(roomName, room);
