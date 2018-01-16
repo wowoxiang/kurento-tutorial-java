@@ -76,6 +76,8 @@ public class Room implements Closeable {
   public void leave(UserSession user) throws IOException {
     log.debug("PARTICIPANT {}: Leaving room {}", user.getName(), this.name);
     this.removeParticipant(user.getName());
+    System.out.println(this.pipeline.getId());
+    //System.out.println();
     user.close();
   }
 
