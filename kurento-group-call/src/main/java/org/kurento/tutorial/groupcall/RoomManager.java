@@ -21,6 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import org.kurento.client.KurentoClient;
+import org.kurento.client.MediaPipeline;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,8 @@ public class RoomManager {
 
     if (room == null) {
       log.debug("Room {} not existent. Will create now!", roomName);
-      room = new Room(roomName, kurento.createMediaPipeline());
+      MediaPipeline pipeline=kurento.getById("3c3b4112-6613-433f-8470-0bdf4f06eaa2_kurento.MediaPipeline",MediaPipeline.class);
+      room = new Room(roomName, pipeline);
       log.info("kurento sessionId:{}",kurento.getSessionId());
       rooms.put(roomName, room);
     }
