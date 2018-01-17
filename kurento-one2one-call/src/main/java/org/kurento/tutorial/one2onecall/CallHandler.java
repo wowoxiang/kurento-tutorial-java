@@ -138,6 +138,7 @@ public class CallHandler extends TextWebSocketHandler {
     String to = jsonMessage.get("to").getAsString();
     String from = jsonMessage.get("from").getAsString();
     JsonObject response = new JsonObject();
+    log.info("user:{},msg:{}",caller.getName(),jsonMessage.toString());
 
     if (registry.exists(to)) {
       caller.setSdpOffer(jsonMessage.getAsJsonPrimitive("sdpOffer").getAsString());
@@ -159,7 +160,7 @@ public class CallHandler extends TextWebSocketHandler {
 
   private void incomingCallResponse(final UserSession callee, JsonObject jsonMessage)
       throws IOException {
-    log.info("user:{},msg:{}",callee.toString(),jsonMessage.toString());
+    log.info("user:{},msg:{}",callee.getName(),jsonMessage.toString());
     String callResponse = jsonMessage.get("callResponse").getAsString();
     String from = jsonMessage.get("from").getAsString();
     final UserSession calleer = registry.getByName(from);
