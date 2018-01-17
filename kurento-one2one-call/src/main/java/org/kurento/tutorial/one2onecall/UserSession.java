@@ -107,7 +107,7 @@ public class UserSession {
   }
 
   public void addCandidate(IceCandidate candidate) {
-    log.info("addCandidate:{}",candidate.toString());
+    log.info("user:{},addCandidate:{}",name,candidate.toString());
     if (this.webRtcEndpoint != null) {
       this.webRtcEndpoint.addIceCandidate(candidate);
     } else {
