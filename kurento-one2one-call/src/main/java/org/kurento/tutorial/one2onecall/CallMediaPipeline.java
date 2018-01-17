@@ -20,6 +20,8 @@ package org.kurento.tutorial.one2onecall;
 import org.kurento.client.KurentoClient;
 import org.kurento.client.MediaPipeline;
 import org.kurento.client.WebRtcEndpoint;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Media Pipeline (WebRTC endpoints, i.e. Kurento Media Elements) and connections for the 1 to 1
@@ -30,7 +32,7 @@ import org.kurento.client.WebRtcEndpoint;
  * @since 4.3.1
  */
 public class CallMediaPipeline {
-
+  private final Logger log = LoggerFactory.getLogger(CallMediaPipeline.class);
   private MediaPipeline pipeline;
   private WebRtcEndpoint callerWebRtcEp;
   private WebRtcEndpoint calleeWebRtcEp;
@@ -51,10 +53,12 @@ public class CallMediaPipeline {
   }
 
   public String generateSdpAnswerForCaller(String sdpOffer) {
+    log.info("CallMediaPipeline generateSdpAnswerForCaller sdpoffer :{}",sdpOffer);
     return callerWebRtcEp.processOffer(sdpOffer);
   }
 
   public String generateSdpAnswerForCallee(String sdpOffer) {
+    log.info("CallMediaPipeline generateSdpAnswerForCallee sdpoffer :{}",sdpOffer);
     return calleeWebRtcEp.processOffer(sdpOffer);
   }
 

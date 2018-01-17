@@ -159,6 +159,7 @@ public class CallHandler extends TextWebSocketHandler {
 
   private void incomingCallResponse(final UserSession callee, JsonObject jsonMessage)
       throws IOException {
+    log.info("user:{},msg:{}",callee.toString(),jsonMessage.toString());
     String callResponse = jsonMessage.get("callResponse").getAsString();
     String from = jsonMessage.get("from").getAsString();
     final UserSession calleer = registry.getByName(from);
