@@ -48,7 +48,7 @@ public class One2OneCallApp implements WebSocketConfigurer {
 
   @Bean
   public KurentoClient kurentoClient() {
-    return KurentoClient.create();
+    return KurentoClient.create("ws://10.60.0.80:8888/kurento");
   }
 
   @Override
@@ -57,7 +57,10 @@ public class One2OneCallApp implements WebSocketConfigurer {
   }
 
   public static void main(String[] args) throws Exception {
-    new SpringApplication(One2OneCallApp.class).run(args);
+    System.out.println(args.length);
+    String[] args2=new String[1];
+    args2[0]="kms.url=ws://10.60.0.80:8888/kurento";
+    new SpringApplication(One2OneCallApp.class).run(args2);
   }
 
 }
